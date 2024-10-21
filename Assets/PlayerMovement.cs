@@ -59,13 +59,16 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        ManageIdle(movement.x , movement.y);
 
         // Normaliza el vector si es necesario
         if (movement.magnitude > 1)
         {
             movement.Normalize();
         }
+
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
     }
     private void Player2Movement()
     {
@@ -93,12 +96,24 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        ManageIdle(movement.x, movement.y);
 
         // Normaliza el vector si es necesario
         if (movement.magnitude > 1)
         {
             movement.Normalize();
+        }
+        
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
+    }
+
+    void ManageIdle(float moveX, float moveY)
+    {
+        if(moveX != 0 || moveY != 0)
+        {
+            animator.SetFloat("LastX", moveX);
+            animator.SetFloat("LastY", moveY);
         }
     }
 }
