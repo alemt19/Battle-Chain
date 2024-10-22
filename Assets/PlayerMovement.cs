@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 5f;
+    public float currentMovementSpeed = 3f;
+    public float topMovementSpeed = 12f;
+    public float initialMovementSpeed = 3f;
+    public float aceleration = 6f;
     public Rigidbody2D rb;
     private Vector2 movement;
     public Animator animator;
@@ -30,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Movement
-        rb.velocity = movement * movementSpeed;
+        rb.AddForce(movement * currentMovementSpeed);
     }
 
     private void Player1Movement()
@@ -60,6 +63,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         ManageIdle(movement.x , movement.y);
+
+        // Calculos para que aumente la velocidad de forma lineal
+        if (movement.magnitude >= 1 && currentMovementSpeed < topMovementSpeed)
+        {
+            currentMovementSpeed += aceleration * Time.deltaTime;
+        }
+        else if (movement.magnitude == 0 && currentMovementSpeed > initialMovementSpeed)
+        {
+            currentMovementSpeed -= aceleration * Time.deltaTime;
+        }
 
         // Normaliza el vector si es necesario
         if (movement.magnitude > 1)
@@ -98,12 +111,22 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         ManageIdle(movement.x, movement.y);
 
+        // Calculos para que aumente la velocidad de forma lineal
+        if (movement.magnitude >= 1 && currentMovementSpeed < topMovementSpeed)
+        {
+            currentMovementSpeed += aceleration * Time.deltaTime;
+        }
+        else if (movement.magnitude == 0 && currentMovementSpeed > initialMovementSpeed)
+        {
+            currentMovementSpeed -= aceleration * Time.deltaTime;
+        }
+
         // Normaliza el vector si es necesario
         if (movement.magnitude > 1)
         {
             movement.Normalize();
         }
-        
+
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
     }
