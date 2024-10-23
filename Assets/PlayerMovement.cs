@@ -7,10 +7,13 @@ public class PlayerMovement : MonoBehaviour
     public float topMovementSpeed = 12f;
     public float initialMovementSpeed = 3f;
     public float aceleration = 6f;
+    public float aceleration2 = 10f;
     public Rigidbody2D rb;
     private Vector2 movement;
     public Animator animator;
     public int playerNumber = 1;
+    private bool isMoving;
+    private Vector2 lastMovement;
 
     void Start()
     {
@@ -33,7 +36,14 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Movement
-        rb.AddForce(movement * currentMovementSpeed);
+        if (isMoving)
+        {
+            rb.AddForce(movement * currentMovementSpeed);
+        }
+        else
+        {
+            rb.velocity = (currentMovementSpeed/2) * lastMovement;
+        }
     }
 
     private void Player1Movement()
@@ -68,16 +78,23 @@ public class PlayerMovement : MonoBehaviour
         if (movement.magnitude >= 1 && currentMovementSpeed < topMovementSpeed)
         {
             currentMovementSpeed += aceleration * Time.deltaTime;
+            isMoving = true;
         }
         else if (movement.magnitude == 0 && currentMovementSpeed > initialMovementSpeed)
         {
             currentMovementSpeed -= aceleration * Time.deltaTime;
+            isMoving = false;
         }
 
         // Normaliza el vector si es necesario
         if (movement.magnitude > 1)
         {
             movement.Normalize();
+        }
+
+        if (movement.magnitude > 0)
+        {
+            lastMovement = movement;
         }
 
         animator.SetFloat("Speed", movement.sqrMagnitude);

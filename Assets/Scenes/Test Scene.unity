@@ -338,6 +338,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3908404604265993751, guid: 20754afe294deb342b1fdf82cc891858, type: 3}
+      propertyPath: aceleration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908404604265993751, guid: 20754afe294deb342b1fdf82cc891858, type: 3}
+      propertyPath: topMovementSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908404604265993751, guid: 20754afe294deb342b1fdf82cc891858, type: 3}
+      propertyPath: initialMovementSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5844566704698184636, guid: 20754afe294deb342b1fdf82cc891858, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.57702
@@ -386,6 +398,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 77b2f917965d60f4cab9b12cf79fea38, type: 3}
+    - target: {fileID: 8999330954744735297, guid: 20754afe294deb342b1fdf82cc891858, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 8b9ff49fd01e6974692fdb1abafc5846, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
