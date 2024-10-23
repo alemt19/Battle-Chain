@@ -74,6 +74,10 @@ public class PlayerMovement : MonoBehaviour
         {
             currentMovementSpeed -= aceleration * Time.deltaTime;
         }
+        else if (currentMovementSpeed < initialMovementSpeed)
+        {
+            currentMovementSpeed = initialMovementSpeed;
+        }
 
         // Normaliza el vector si es necesario
         if (movement.magnitude > 1)
