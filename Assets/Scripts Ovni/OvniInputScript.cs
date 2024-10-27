@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class IAPlayerScript : MonoBehaviour
+public class OvniInputScript : MonoBehaviour
 {
     [SerializeField]
     private Camera mainCamera;

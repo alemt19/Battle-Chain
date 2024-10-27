@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - navePrueba
   layers:
   - Default
   - TransparentFX
@@ -11,13 +12,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - ss
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Agent
+  - Hittable
+  - NoHittable
+  - Player
+  - Enemy1
+  - Enemy2
   - 
   - 
   - 

@@ -22,7 +22,7 @@ public class AimTurret : MonoBehaviour
         */
 
         var rotationStep = turretRotationSpeed * Time.deltaTime; // rotationStep es la cantidad máxima en grados que la torreta rotará en este cuadro.
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,0, desiredAngle-90), rotationStep);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,0, desiredAngle), rotationStep);
     }
 
 }

@@ -5,17 +5,10 @@ using UnityEngine;
 public class OvniMover : MonoBehaviour
 {
     private Vector2 movementVector;
+    public OvniMovementData movementData;
     public Rigidbody2D rb2d;
-    public float maxSpeed = 10;
-    public float rotationSpeed = 100;
-
-    public float accelaration  = 70;
-    public  float deacceleration = 500;
     public float currentSpeed = 0;
     public float currentForewardDirection = 1;
-
-
-
     private void Awake()
     {
         rb2d = GetComponentInParent<Rigidbody2D>();
@@ -26,13 +19,13 @@ public class OvniMover : MonoBehaviour
     {
         if (Mathf.Abs(movementVector.y)>0)
         {
-            currentSpeed += accelaration * Time.deltaTime;
+            currentSpeed += movementData.acceleration * Time.deltaTime;
         }
         else
         {
-            currentSpeed -= deacceleration * Time.deltaTime;
+            currentSpeed -= movementData.deacceleration * Time.deltaTime;
         }
-        currentSpeed = Mathf.Clamp(currentSpeed,0,maxSpeed);
+        currentSpeed = Mathf.Clamp(currentSpeed,0,movementData.maxSpeed);
     }
 
     public void Move(Vector2 movementVector)
@@ -52,7 +45,6 @@ public class OvniMover : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = (Vector2)transform.up * currentSpeed * currentForewardDirection * Time.fixedDeltaTime;
-        Debug.Log(rb2d.velocity);
-        rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0,0,-movementVector.x * rotationSpeed * Time.fixedDeltaTime));
+        rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0,0,-movementVector.x * movementData.rotationSpeed * Time.fixedDeltaTime));
     }
 }
