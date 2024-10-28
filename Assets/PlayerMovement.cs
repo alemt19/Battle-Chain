@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Movement
-        rb.velocity = (currentMovementSpeed) * lastMovement;
+        rb.AddForce((currentMovementSpeed) * lastMovement);
     }
 
     private void Player1Movement()
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement.magnitude > 0)
         {
-            lastMovement = movement;
+            lastMovement = movement.normalized;
         }
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
@@ -131,6 +131,11 @@ public class PlayerMovement : MonoBehaviour
         if (movement.magnitude > 1)
         {
             movement.Normalize();
+        }
+
+        if (movement.magnitude > 0)
+        {
+            lastMovement = movement.normalized;
         }
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
