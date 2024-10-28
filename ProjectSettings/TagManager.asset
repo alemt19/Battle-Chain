@@ -4,14 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
   - Player1
   - Player2
   - Nave1
   - Nave2
-=======
   - navePrueba
->>>>>>> origin/ramaAle
   layers:
   - Default
   - TransparentFX

@@ -11,12 +11,12 @@ public class PlayerRope : MonoBehaviour
     public float mult = 10f;
     public PlayerMovement playerMovementReference;
     float duration;
-    float baseDuration = 0.2f;
+    float baseDuration = 0.05f;
     float elapsedTime;
     Vector3 direction;
     void Start()
     {
-        nave1 = GameObject.FindGameObjectWithTag("Nave1");
+        nave1 = GameObject.FindGameObjectWithTag("navePrueba");
     }
 
     void Update()
@@ -25,7 +25,6 @@ public class PlayerRope : MonoBehaviour
         {
             elapsedTime = 0f;
             duration = (nave1.transform.position - transform.position).magnitude * baseDuration;
-            Debug.Log(duration);
         }
     }
 

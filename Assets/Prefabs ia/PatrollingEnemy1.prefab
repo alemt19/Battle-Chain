@@ -84,7 +84,7 @@ MonoBehaviour:
     m_Bits: 4096
   visibilityLayer:
     serializedVersion: 2
-    m_Bits: 5376
+    m_Bits: 4864
   <TargetVisible>k__BackingField: 0
 --- !u!114 &2540496700683841396
 MonoBehaviour:
