@@ -4,10 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Player1
   - Player2
   - Nave1
   - Nave2
+=======
+  - navePrueba
+>>>>>>> origin/ramaAle
   layers:
   - Default
   - TransparentFX
@@ -15,13 +19,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - ss
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Agent
+  - Hittable
+  - NoHittable
+  - Player
+  - Enemy1
+  - Enemy2
   - 
   - 
   - 
