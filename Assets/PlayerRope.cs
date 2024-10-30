@@ -8,12 +8,15 @@ public class PlayerRope : MonoBehaviour
 {
     GameObject nave1;
     public Rigidbody2D rb;
-    public float mult = 10f;
+    public float mult;
     public PlayerMovement playerMovementReference;
     float duration;
-    float baseDuration = 0.05f;
+    float baseDuration = 0.03f;
     float elapsedTime;
     Vector3 direction;
+    bool isNearShip = false;
+    float distancePlayerToShip;
+    public 
     void Start()
     {
         nave1 = GameObject.FindGameObjectWithTag("navePrueba");
@@ -24,17 +27,31 @@ public class PlayerRope : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && elapsedTime >= duration)
         {
             elapsedTime = 0f;
-            duration = (nave1.transform.position - transform.position).magnitude * baseDuration;
+            distancePlayerToShip = (nave1.transform.position - transform.position).magnitude;
+            duration = distancePlayerToShip * baseDuration;
+            rb.drag = 1.8f;
         }
     }
 
     private void FixedUpdate()
     {
-        if (elapsedTime < duration)
+        if (elapsedTime < duration && !isNearShip)
         {
             elapsedTime += Time.deltaTime;
             direction = nave1.transform.position - transform.position;
-            rb.AddForce(direction.normalized * mult);
+            rb.AddForce(direction * mult);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isNearShip = true;
+        rb.drag = 20;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isNearShip = false;
+        rb.drag = 1.8f;
     }
 }

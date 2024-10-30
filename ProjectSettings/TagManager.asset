@@ -9,6 +9,7 @@ TagManager:
   - Nave1
   - Nave2
   - navePrueba
+  - ObjectPosition
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Player
   - Enemy1
   - Enemy2
-  - 
+  - Obstacles
   - 
   - 
   - 

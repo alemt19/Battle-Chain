@@ -3,20 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
-    public float currentMovementSpeed = 3f;
-    public float topMovementSpeed = 12f;
-    public float initialMovementSpeed = 3f;
-    public float aceleration = 6f;
+    float currentMovementSpeed = 0f;
+    public float topMovementSpeed = 20f;
+    public float initialMovementSpeed = 0f;
+    public float aceleration = 10f;
     public Rigidbody2D rb;
     private Vector2 movement;
     public Animator animator;
-    public int playerNumber = 1;
+    public int playerNumber;
     private Vector2 lastMovement;
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -74,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         {
             currentMovementSpeed -= aceleration * Time.deltaTime;
         }
-        else if (currentMovementSpeed < initialMovementSpeed)
+        else if (currentMovementSpeed < initialMovementSpeed  || lastMovement != movement)
         {
             currentMovementSpeed = initialMovementSpeed;
         }
@@ -91,7 +86,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
-
     }
     private void Player2Movement()
     {
