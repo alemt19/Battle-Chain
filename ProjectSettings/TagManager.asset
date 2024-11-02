@@ -25,8 +25,8 @@ TagManager:
   - Enemy1
   - Enemy2
   - Obstacles
-  - 
-  - 
+  - borde
+  - no borde
   - 
   - 
   - 
@@ -46,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: borde
+    uniqueID: 3228132963
+    locked: 0
+  - name: no borde
+    uniqueID: 225832547
     locked: 0

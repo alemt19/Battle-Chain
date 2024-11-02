@@ -48,7 +48,7 @@ public class PickObject : MonoBehaviour
             pickedObject = collision.gameObject;
             collider = pickedObject.GetComponent<Collider2D>();
             collider.enabled = false;
-            pickedObject.transform.SetParent(objectPosition.transform, false);
+            pickedObject.transform.SetParent(objectPosition.transform, false); // establece el padre
             pickedObject.transform.position = objectPosition.transform.position;
             pickedObject.GetComponent<Rigidbody2D>().isKinematic = true;
         }

@@ -580,9 +580,17 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.70120996
       objectReference: {fileID: 0}
+    - target: {fileID: 7052878039259075538, guid: 37761a2c710d73e4ba860a9c35602761, type: 3}
+      propertyPath: arrivedDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9078383255171331369, guid: 37761a2c710d73e4ba860a9c35602761, type: 3}
       propertyPath: m_Name
       value: PatrollingEnemy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078383255171331369, guid: 37761a2c710d73e4ba860a9c35602761, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -925,6 +933,10 @@ PrefabInstance:
     - target: {fileID: 7453499047547555505, guid: bba06c7ed5f803c4baf48c2b20511caf, type: 3}
       propertyPath: m_AngleLimits.m_UpperAngle
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630016792496115518, guid: bba06c7ed5f803c4baf48c2b20511caf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7755723095511464441, guid: bba06c7ed5f803c4baf48c2b20511caf, type: 3}
       propertyPath: m_AngleLimits.m_LowerAngle

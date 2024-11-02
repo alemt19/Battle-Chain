@@ -69,10 +69,21 @@ public class PlayerMovement : MonoBehaviour
         {
             currentMovementSpeed -= aceleration * Time.deltaTime;
         }
-        else if (currentMovementSpeed < initialMovementSpeed  || lastMovement != movement)
+        else if (currentMovementSpeed < initialMovementSpeed)
         {
             currentMovementSpeed = initialMovementSpeed;
         }
+
+        float distancia = Vector2.Distance(lastMovement, movement);
+        bool condicional = movement!= new Vector2(0,0);
+        if (  Mathf.Sqrt(2)<= distancia && condicional) {
+            currentMovementSpeed = initialMovementSpeed;
+        }
+        else if (  Mathf.Abs(1-distancia) < 0.1f && condicional) {
+            currentMovementSpeed -= currentMovementSpeed/2;
+        }
+
+
 
         // Normaliza el vector si es necesario
         if (movement.magnitude > 1)
@@ -82,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement.magnitude > 0)
         {
-            lastMovement = movement.normalized;
+            lastMovement = movement;
         }
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
