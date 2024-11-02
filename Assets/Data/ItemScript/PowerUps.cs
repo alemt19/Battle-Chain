@@ -5,19 +5,25 @@ using UnityEngine;
 
 public class PowerUps : MonoBehaviour
 {
-    GameObject ovniTurret;
+    GameObject target;
     public TurretData powerUpData;
+    public HealData healData;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.CompareTag("navePrueba"))
+        if (collision.gameObject.CompareTag("navePrueba") && powerUpData != null)
         {
-            ovniTurret = collision.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
-            if (!ovniTurret.GetComponent<Turret>().powerUp)
+            target = collision.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+            if (!target.GetComponent<Turret>().powerUp)
             {
-                StartCoroutine(powerUpData.Apply(ovniTurret, gameObject));
+                StartCoroutine(powerUpData.Apply(target, gameObject));
             }
+        }
+        else if (collision.gameObject.CompareTag("navePrueba") && healData != null)
+        {
+            target = collision.gameObject;
+            healData.Apply(target, gameObject);
         }
     }
 }
