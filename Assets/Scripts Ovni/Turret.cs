@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour
     public TurretData turretData;
     private bool canShoot = true; //Flag to check if the turret can shoot
     private Collider2D[] ovniColliders; // Matriz que guarda los colliders de los ovnis a los que la bala no puede dañar, como el propio ovni de donde sale la bala
+    public bool powerUp = false;
 
     private ObjectPool bulletPool;
     [SerializeField]

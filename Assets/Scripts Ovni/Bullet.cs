@@ -9,10 +9,12 @@ public class Bullet : MonoBehaviour
     private Vector2 startPosition; // posicion inicial de la bala 
     private float conquaredDistance = 0; // distancia recorrida
     private Rigidbody2D rb2d;
+    private SpriteRenderer sr;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void Initialize(BulletData bulletData)
@@ -20,6 +22,8 @@ public class Bullet : MonoBehaviour
         this.bulletData = bulletData;
         startPosition = transform.position;
         rb2d.velocity = transform.up * this.bulletData.speed;
+        sr.sprite = bulletData.bulletSprite;
+        
     }
 
     private void Update()

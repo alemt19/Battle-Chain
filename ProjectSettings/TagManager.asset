@@ -10,6 +10,8 @@ TagManager:
   - Nave2
   - navePrueba
   - ObjectPosition
+  - BrakeArea
+  - ItemPool
   layers:
   - Default
   - TransparentFX
@@ -27,6 +29,8 @@ TagManager:
   - Obstacles
   - borde
   - no borde
+  - Rope
+  - BrakeArea
   - 
   - 
   - 
