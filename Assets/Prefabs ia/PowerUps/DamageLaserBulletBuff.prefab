@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6353226118610164776}
   - component: {fileID: 5231536497832654570}
   - component: {fileID: 1688592078985614357}
+  - component: {fileID: 3469995413952495341}
   m_Layer: 9
   m_Name: DamageLaserBulletBuff
   m_TagString: Untagged
@@ -135,7 +136,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1.5
+  m_LinearDrag: 0
   m_AngularDrag: 0.5
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -162,3 +163,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpData: {fileID: 11400000, guid: 0941c07cce470c844b555a2d94072fbb, type: 2}
+  healData: {fileID: 0}
+--- !u!114 &3469995413952495341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830298030594262769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf06a5dd5bcc094ebafe6f1ccd8b683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 15

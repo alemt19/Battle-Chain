@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295785bfe12e9ca4dad02c1d7b0e055f, type: 3}
   m_Name: BigHeal
   m_EditorClassIdentifier: 
-  healValue: 50
+  healValue: 80
