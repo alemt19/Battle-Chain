@@ -7,7 +7,7 @@ public class PickObject : MonoBehaviour
 {
     GameObject objectPosition;
     GameObject pickedObject;
-    Collider2D collider;
+    new Collider2D collider;
     float elapsedTime = 0f;
 
     void Start()
@@ -31,7 +31,7 @@ public class PickObject : MonoBehaviour
             pickedObject.transform.SetParent(null);
             pickedObject.GetComponent<Rigidbody2D>().isKinematic = false;
             pickedObject = null;
-            collider.enabled = true;
+            collider.isTrigger = false;
         }
     }
 
@@ -47,7 +47,7 @@ public class PickObject : MonoBehaviour
             elapsedTime = 0;
             pickedObject = collision.gameObject;
             collider = pickedObject.GetComponent<Collider2D>();
-            collider.enabled = false;
+            collider.isTrigger = true;
             pickedObject.transform.SetParent(objectPosition.transform, false);
             pickedObject.transform.position = objectPosition.transform.position;
             pickedObject.GetComponent<Rigidbody2D>().isKinematic = true;

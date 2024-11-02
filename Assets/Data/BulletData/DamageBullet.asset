@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ea2b888587fa64c822e44b53b7c484, type: 3}
-  m_Name: BulletData
+  m_Name: DamageBullet
   m_EditorClassIdentifier: 
-  bulletSprite: {fileID: 21300000, guid: d1b88d255255b4f40a6ca6e7b3b7e1ae, type: 3}
-  speed: 10
-  damage: 10
+  bulletSprite: {fileID: 21300000, guid: 37b7f14c255bb414cafc9c67e0b1dec7, type: 3}
+  speed: 5
+  damage: 30
   maxDistance: 30

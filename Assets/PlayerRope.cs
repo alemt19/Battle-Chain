@@ -7,19 +7,20 @@ using UnityEngine;
 public class PlayerRope : MonoBehaviour
 {
     GameObject nave1;
+    CircleCollider2D brakeArea;
     public Rigidbody2D rb;
     public float mult;
     public PlayerMovement playerMovementReference;
     float duration;
-    float baseDuration = 0.03f;
+    float baseDuration = 0.05f;
     float elapsedTime;
     Vector3 direction;
     bool isNearShip = false;
     float distancePlayerToShip;
-    public 
     void Start()
     {
         nave1 = GameObject.FindGameObjectWithTag("navePrueba");
+        brakeArea = GameObject.FindGameObjectWithTag("BrakeArea").GetComponent<CircleCollider2D>();
     }
 
     void Update()
@@ -30,6 +31,7 @@ public class PlayerRope : MonoBehaviour
             distancePlayerToShip = (nave1.transform.position - transform.position).magnitude;
             duration = distancePlayerToShip * baseDuration;
             rb.drag = 1.8f;
+            brakeArea.radius = distancePlayerToShip / 3.3f;
         }
     }
 
@@ -43,15 +45,19 @@ public class PlayerRope : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        isNearShip = true;
-        rb.drag = 20;
+        if (collision.gameObject.name == "Trigger Collider")
+        {
+            isNearShip = true;
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        isNearShip = false;
-        rb.drag = 1.8f;
+        if (collision.gameObject.name == "Trigger Collider")
+        {
+            isNearShip = false;
+        }
     }
 }
