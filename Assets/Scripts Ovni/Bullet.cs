@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
         else
         {
             damagableScript.enabled = false;
-            damagableScriptActive = true;
+            damagableScriptActive = false;
         }
         
     }
