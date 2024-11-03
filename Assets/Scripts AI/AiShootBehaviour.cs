@@ -36,7 +36,7 @@ public class AiShootBehaviour : AIBehaviour
     {
 
         var direction = detector.Target.position - ovni.aimTurret.transform.position;
-        if(Vector2.Angle(ovni.aimTurret.transform.right, direction)< fieldOfVisionForShooting/2)
+        if(Vector2.Angle(ovni.aimTurret.transform.right, direction)< fieldOfVisionForShooting/2 + 90)
         {
             // La torreta esta en el rango de +- 30 grados con el target
             return true;

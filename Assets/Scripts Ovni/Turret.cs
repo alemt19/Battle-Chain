@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     private bool canShoot = true; //Flag to check if the turret can shoot
     private Collider2D[] ovniColliders; // Matriz que guarda los colliders de los ovnis a los que la bala no puede dañar, como el propio ovni de donde sale la bala
     public bool powerUp = false;
+    private string namePadre;
 
     private ObjectPool bulletPool;
     [SerializeField]
@@ -19,6 +20,7 @@ public class Turret : MonoBehaviour
     {
         ovniColliders = GetComponentsInParent<Collider2D>(); // para ignorar la colision entre la bala y el  propio ovni
         bulletPool = GetComponent<ObjectPool>();
+        namePadre = transform.root.gameObject.name;
 
     }
 
@@ -54,6 +56,13 @@ public class Turret : MonoBehaviour
                 bullet.transform.position =  barrel.position;
                 bullet.transform.rotation = barrel.rotation;
                 bullet.GetComponent<Bullet>().Initialize(turretData.bulletData);
+                var parentObject = GameObject.Find("ObjectPool_Bullet");
+                foreach (Transform childTransform in parentObject.transform) {
+                    GameObject child = childTransform.gameObject;
+                    if (child.name.Contains(namePadre)){
+                        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), child.GetComponent<Collider2D>());
+                    }
+                }
                 foreach(var collider in ovniColliders)
                 {
                     Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), collider);
