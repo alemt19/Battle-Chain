@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5191594882510121036}
   - component: {fileID: 2729405966352257773}
   - component: {fileID: 6549378446788694503}
+  - component: {fileID: 7685318594425366933}
   m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
@@ -150,7 +151,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.296875, y: 0.625}
+    oldSize: {x: 0.39583334, y: 0.8333333}
     newSize: {x: 0.19, y: 0.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -172,3 +173,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletData: {fileID: 0}
+--- !u!114 &7685318594425366933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999487968916790759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065e6d420e63b8840a63cfd6cd0dc56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 40
+  health: 0
+  OnDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6549378446788694503}
+        m_TargetAssemblyTypeName: Bullet, Assembly-CSharp
+        m_MethodName: DisableObjectAndResetHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
