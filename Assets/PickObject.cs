@@ -12,7 +12,7 @@ public class PickObject : MonoBehaviour
 
     void Start()
     {
-        objectPosition = GameObject.FindGameObjectWithTag("ObjectPosition");
+        objectPosition = gameObject.transform.GetChild(0).gameObject;
     }
 
     void Update()

@@ -27,8 +27,6 @@ TagManager:
   - Enemy1
   - Enemy2
   - Obstacles
-  - borde
-  - no borde
   - Rope
   - BrakeArea
   - 

@@ -20,6 +20,11 @@ public class OvniController : MonoBehaviour
         
     }    
 
+    public void newAwake()
+    {
+        turrets = GetComponentsInChildren<Turret>();
+    }
+
     public void HandleShoot()
     {
         foreach (var turret in turrets)
