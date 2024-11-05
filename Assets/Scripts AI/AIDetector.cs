@@ -77,12 +77,14 @@ public class AIDetector : MonoBehaviour
                 playerLayerMask = LayerMask.GetMask("Player2");
                 visibilityLayer |= (1 << LayerMask.NameToLayer("Player2"));
                 visibilityLayer &= ~(1 << LayerMask.NameToLayer("Enemy2"));
+                Target = null;
             }
             else
             {
                 playerLayerMask = LayerMask.GetMask("Enemy2");
                 visibilityLayer |= (1 << LayerMask.NameToLayer("Enemy2"));
                 visibilityLayer &= ~(1 << LayerMask.NameToLayer("Player2"));
+                Target = null;
             }
         }
         else{
@@ -100,12 +102,14 @@ public class AIDetector : MonoBehaviour
                 playerLayerMask = LayerMask.GetMask("Player1");
                 visibilityLayer |= (1 << LayerMask.NameToLayer("Player1"));
                 visibilityLayer &= ~(1 << LayerMask.NameToLayer("Enemy1"));
+                Target = null;
             }
             else
             {
                 playerLayerMask = LayerMask.GetMask("Enemy1");
                 visibilityLayer |= (1 << LayerMask.NameToLayer("Enemy1"));
                 visibilityLayer &= ~(1 << LayerMask.NameToLayer("Player1"));
+                Target = null;
             }
         }
         else
@@ -119,6 +123,7 @@ public class AIDetector : MonoBehaviour
     private bool CheckTargetVisible()
     {
         var result = Physics2D.Raycast(transform.position, Target.position  - transform.position, viewRadius, visibilityLayer); // Lanza un rayo  desde la posición de la IA hacia la posición del objetivo hasta el radio  de visión y si detecta algo que este en la capa visibilityLayer retorna una variable con info de ese go
+        Debug.Log(result.collider.gameObject.name);
         if(result.collider != null)
         {
             return (playerLayerMask & (1 << result.collider.gameObject.layer)) != 0; 
