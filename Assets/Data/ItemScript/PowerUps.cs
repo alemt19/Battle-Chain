@@ -12,7 +12,7 @@ public class PowerUps : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.CompareTag("navePrueba") && powerUpData != null)
+        if ((collision.gameObject.CompareTag("Nave1") || collision.gameObject.CompareTag("Nave2")) && powerUpData != null)
         {
             target = collision.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
             if (!target.GetComponent<Turret>().powerUp)
@@ -20,7 +20,7 @@ public class PowerUps : MonoBehaviour
                 StartCoroutine(powerUpData.Apply(target, gameObject));
             }
         }
-        else if (collision.gameObject.CompareTag("navePrueba") && healData != null)
+        else if ((collision.gameObject.CompareTag("Nave1") || collision.gameObject.CompareTag("Nave2")) && healData != null)
         {
             target = collision.gameObject;
             healData.Apply(target, gameObject);

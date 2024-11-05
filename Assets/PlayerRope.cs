@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerRope : MonoBehaviour
 {
-    GameObject nave1;
+    GameObject nave;
     CircleCollider2D brakeArea;
     public Rigidbody2D rb;
     public float mult;
@@ -19,19 +19,19 @@ public class PlayerRope : MonoBehaviour
     float distancePlayerToShip;
     void Start()
     {
-        nave1 = GameObject.FindGameObjectWithTag("navePrueba");
-        brakeArea = GameObject.FindGameObjectWithTag("BrakeArea").GetComponent<CircleCollider2D>();
+        nave = transform.parent.GetChild(0).GetChild(1).gameObject;
+        brakeArea = transform.parent.GetChild(0).GetChild(1).GetChild(3).gameObject.GetComponent<CircleCollider2D>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && elapsedTime >= duration)
+        if (gameObject.name == "Player 1")
         {
-            elapsedTime = 0f;
-            distancePlayerToShip = (nave1.transform.position - transform.position).magnitude;
-            duration = distancePlayerToShip * baseDuration;
-            rb.drag = 1.8f;
-            brakeArea.radius = distancePlayerToShip / 3.3f;
+            PlayerRope1();
+        }
+        else if (gameObject.name == "Player 2")
+        {
+            PlayerRope2();
         }
     }
 
@@ -40,7 +40,7 @@ public class PlayerRope : MonoBehaviour
         if (elapsedTime < duration && !isNearShip)
         {
             elapsedTime += Time.deltaTime;
-            direction = nave1.transform.position - transform.position;
+            direction = nave.transform.position - transform.position;
             rb.AddForce(direction * mult);
         }
     }
@@ -58,6 +58,31 @@ public class PlayerRope : MonoBehaviour
         if (collision.gameObject.name == "Trigger Collider")
         {
             isNearShip = false;
+        }
+    }
+
+    void PlayerRope1()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && elapsedTime >= duration)
+        {
+            Debug.Log(nave.transform.position);
+            elapsedTime = 0f;
+            distancePlayerToShip = (nave.transform.position - transform.position).magnitude;
+            duration = distancePlayerToShip * baseDuration;
+            rb.drag = 1.8f;
+            brakeArea.radius = distancePlayerToShip / 3.3f;
+        }
+    }
+
+    void PlayerRope2()
+    {
+        if (Input.GetKeyDown(KeyCode.O) && elapsedTime >= duration)
+        {
+            elapsedTime = 0f;
+            distancePlayerToShip = (nave.transform.position - transform.position).magnitude;
+            duration = distancePlayerToShip * baseDuration;
+            rb.drag = 1.8f;
+            brakeArea.radius = distancePlayerToShip / 3.3f;
         }
     }
 }
