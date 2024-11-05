@@ -14,7 +14,7 @@ public class RespawnScript : MonoBehaviour
     void Start()
     {
         player = transform.GetChild(1).gameObject;
-        rope = transform.GetChild(2).gameObject;
+        rope = transform.GetChild(3).gameObject;
         damagable = player.GetComponent<Damagable>();
     }
 
