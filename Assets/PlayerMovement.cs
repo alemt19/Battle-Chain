@@ -10,17 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 movement;
     public Animator animator;
-    public int playerNumber;
     private Vector2 lastMovement;
 
     void Update()
     {
         // Input
-        if (playerNumber == 1)
+        if (gameObject.name == "Player 1")
         {
             Player1Movement();
         }
-        else if (playerNumber == 2)
+        else if (gameObject.name == "Player 2")
         {
             Player2Movement();
         }
@@ -102,22 +101,22 @@ public class PlayerMovement : MonoBehaviour
     {
         movement = Vector2.zero; // Reiniciar el vector de movimiento
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.I))
         {
             movement.y = 1; // Mover hacia arriba
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.K))
         {
             movement.y = -1; // Mover hacia abajo
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.J))
         {
             movement.x = -1; // Mover hacia la izquierda
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.L))
         {
             movement.x = 1; // Mover hacia la derecha
         }
@@ -135,6 +134,23 @@ public class PlayerMovement : MonoBehaviour
         {
             currentMovementSpeed -= aceleration * Time.deltaTime;
         }
+        else if (currentMovementSpeed < initialMovementSpeed)
+        {
+            currentMovementSpeed = initialMovementSpeed;
+        }
+
+        float distancia = Vector2.Distance(lastMovement, movement);
+        bool condicional = movement != new Vector2(0, 0);
+        if (Mathf.Sqrt(2) <= distancia && condicional)
+        {
+            currentMovementSpeed = initialMovementSpeed;
+        }
+        else if (Mathf.Abs(1 - distancia) < 0.1f && condicional)
+        {
+            currentMovementSpeed -= currentMovementSpeed / 2;
+        }
+
+
 
         // Normaliza el vector si es necesario
         if (movement.magnitude > 1)
@@ -144,11 +160,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement.magnitude > 0)
         {
-            lastMovement = movement.normalized;
+            lastMovement = movement;
         }
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
-
     }
 
     void ManageIdle(float moveX, float moveY)

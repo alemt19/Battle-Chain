@@ -12,6 +12,8 @@ TagManager:
   - ObjectPosition
   - BrakeArea
   - ItemPool
+  - BrakeArea1
+  - BrakeArea2
   layers:
   - Default
   - TransparentFX
@@ -23,14 +25,14 @@ TagManager:
   - Agent
   - Hittable
   - NoHittable
-  - Player
+  - 
   - Enemy1
   - Enemy2
   - Obstacles
   - Rope
   - BrakeArea
-  - 
-  - 
+  - Player1
+  - Player2
   - 
   - 
   - 
@@ -54,4 +56,7 @@ TagManager:
     locked: 0
   - name: no borde
     uniqueID: 225832547
+    locked: 0
+  - name: UI
+    uniqueID: 2886142339
     locked: 0
