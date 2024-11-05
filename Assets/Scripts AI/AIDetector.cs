@@ -16,6 +16,7 @@ public class AIDetector : MonoBehaviour
 
     [SerializeField]
     private LayerMask visibilityLayer; // El resto de capas que puede reconocer la ia
+    public int playerNumber;
 
     [field: SerializeField]
     public bool TargetVisible { get; private set;}
