@@ -17,6 +17,10 @@ public class AIDetector : MonoBehaviour
     [SerializeField]
     private LayerMask visibilityLayer; // El resto de capas que puede reconocer la ia
     public int playerNumber;
+    private bool targetIa;
+    private float  detectionTimer1;
+    private float  detectionTimer2;
+
 
     [field: SerializeField]
     public bool TargetVisible { get; private set;}
@@ -32,10 +36,25 @@ public class AIDetector : MonoBehaviour
     private void Start()
     {
         StartCoroutine(DetectionCoroutine());
+        targetIa = false;
+        detectionTimer1 = 0.5f;
+        detectionTimer2 = 0.5f;
     }
+    
 
     private void Update()
     {
+
+        // Input
+        if (playerNumber == 1)
+        {
+            Player1Target();
+        }
+        else if (playerNumber == 2)
+        {
+            Player2Target();
+        }
+
         
         if (Target != null)
         {
@@ -46,6 +65,55 @@ public class AIDetector : MonoBehaviour
             Target = null;
         }
     }
+
+    private void Player1Target()
+    {
+        if(Input.GetKey(KeyCode.R) && detectionTimer1 >= 0.5)
+        {
+            detectionTimer1 = 0;
+            targetIa = !targetIa;
+            if(targetIa)
+            {
+                playerLayerMask = LayerMask.GetMask("Player2");
+                visibilityLayer |= (1 << LayerMask.NameToLayer("Player2"));
+                visibilityLayer &= ~(1 << LayerMask.NameToLayer("Enemy2"));
+            }
+            else
+            {
+                playerLayerMask = LayerMask.GetMask("Enemy2");
+                visibilityLayer |= (1 << LayerMask.NameToLayer("Enemy2"));
+                visibilityLayer &= ~(1 << LayerMask.NameToLayer("Player2"));
+            }
+        }
+        else{
+            detectionTimer1 += Time.deltaTime;
+        }
+    }
+    
+    private void Player2Target()
+    {
+        if(Input.GetKey(KeyCode.Y) && detectionTimer2 >= 0.5)
+        {
+            targetIa = !targetIa;
+            if(targetIa)
+            {
+                playerLayerMask = LayerMask.GetMask("Player1");
+                visibilityLayer |= (1 << LayerMask.NameToLayer("Player1"));
+                visibilityLayer &= ~(1 << LayerMask.NameToLayer("Enemy1"));
+            }
+            else
+            {
+                playerLayerMask = LayerMask.GetMask("Enemy1");
+                visibilityLayer |= (1 << LayerMask.NameToLayer("Enemy1"));
+                visibilityLayer &= ~(1 << LayerMask.NameToLayer("Player1"));
+            }
+        }
+        else
+        {
+            detectionTimer2 += Time.deltaTime;
+        } 
+    }
+
 
     //Verificamos si el tarjet es de la capa de interes o de otras capas
     private bool CheckTargetVisible()
