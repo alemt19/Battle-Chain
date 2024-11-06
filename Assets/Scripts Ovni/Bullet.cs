@@ -62,7 +62,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Colliderd " + collision.name);
+        //Debug.Log("Colliderd " + collision.name);
 
         var damageble = collision.GetComponent<Damagable>();
         if (damageble != null)
@@ -78,6 +78,8 @@ public class Bullet : MonoBehaviour
         {
             DisableObjectAndResetHealth();
         }
+
+        Audio.Instance.PlaySound(bulletData.audioClip);
     }
 
 
