@@ -16,3 +16,4 @@ MonoBehaviour:
   speed: 10
   damage: 10
   maxDistance: 30
+  audioClip: {fileID: 8300000, guid: 230440c5a7071f9489dcfface5857d0a, type: 3}
