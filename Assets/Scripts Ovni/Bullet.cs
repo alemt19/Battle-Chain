@@ -78,6 +78,8 @@ public class Bullet : MonoBehaviour
         {
             DisableObjectAndResetHealth();
         }
+
+        Audio.Instance.PlaySound(bulletData.audioClip);
     }
 
 

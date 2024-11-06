@@ -683,6 +683,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7609371956614334029, guid: 18a16d2278e610242991e8e87ccb41c9, type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609371956614334029, guid: 18a16d2278e610242991e8e87ccb41c9, type: 3}
       propertyPath: playerLayerMask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
@@ -1969,6 +1973,18 @@ PrefabInstance:
     - target: {fileID: 7609371956614334029, guid: bba06c7ed5f803c4baf48c2b20511caf, type: 3}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609371956614334029, guid: bba06c7ed5f803c4baf48c2b20511caf, type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609371956614334029, guid: bba06c7ed5f803c4baf48c2b20511caf, type: 3}
+      propertyPath: playerLayerMask.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609371956614334029, guid: bba06c7ed5f803c4baf48c2b20511caf, type: 3}
+      propertyPath: visibilityLayer.m_Bits
+      value: 4864
       objectReference: {fileID: 0}
     - target: {fileID: 7609371956614334029, guid: bba06c7ed5f803c4baf48c2b20511caf, type: 3}
       propertyPath: <TargetVisible>k__BackingField

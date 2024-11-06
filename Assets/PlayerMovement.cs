@@ -34,26 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private void Player1Movement()
     {
         movement = Vector2.zero; // Reiniciar el vector de movimiento
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            movement.y = 1; // Mover hacia arriba
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            movement.y = -1; // Mover hacia abajo
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            movement.x = -1; // Mover hacia la izquierda
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            movement.x = 1; // Mover hacia la derecha
-        }
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
@@ -101,25 +83,8 @@ public class PlayerMovement : MonoBehaviour
     {
         movement = Vector2.zero; // Reiniciar el vector de movimiento
 
-        if (Input.GetKey(KeyCode.I))
-        {
-            movement.y = 1; // Mover hacia arriba
-        }
-
-        if (Input.GetKey(KeyCode.K))
-        {
-            movement.y = -1; // Mover hacia abajo
-        }
-
-        if (Input.GetKey(KeyCode.J))
-        {
-            movement.x = -1; // Mover hacia la izquierda
-        }
-
-        if (Input.GetKey(KeyCode.L))
-        {
-            movement.x = 1; // Mover hacia la derecha
-        }
+        movement.x = Input.GetAxisRaw("Horizontal1");
+        movement.y = Input.GetAxisRaw("Vertical1");
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
