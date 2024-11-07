@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
+using TMPro;
 
 public class Damagable : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Damagable : MonoBehaviour
     public UnityEvent<float> OnHealthChange;
     public UnityEvent OnHeal;
     public UnityEvent OnHit;
+    public GameObject canvas;
 
 
     private void Start()
@@ -35,7 +37,23 @@ public class Damagable : MonoBehaviour
         Health -= damagePoints;
         if (Health <= 0)
         {
+            string nameTag =  transform.gameObject.tag;
             OnDead?.Invoke();
+            if (nameTag == "Nave1"  || nameTag == "Nave2")
+            {
+                if(nameTag.Contains("1"))
+                {
+                    nameTag = "Player 2";
+                }
+                else{
+                    nameTag = "Player 1";
+                }
+                //canvas.GetComponent<TMP_Text>().text = "Game Over";
+                GameObject text =  canvas.transform.GetChild(0).transform.GetChild(0).gameObject;
+                text.GetComponent<TextMeshProUGUI>().text = "Gano " + nameTag ;
+                canvas.SetActive(true);
+            }
+
         }
         else 
         {
