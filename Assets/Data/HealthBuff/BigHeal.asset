@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: BigHeal
   m_EditorClassIdentifier: 
   healValue: 80
+  audioClip: {fileID: 8300000, guid: f261aadec0f78284f95e6046c6775dbf, type: 3}

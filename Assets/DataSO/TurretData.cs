@@ -9,6 +9,7 @@ public class TurretData : ScriptableObject
     public float reloadDelay = 1;
     public BulletData bulletData;
     public float duration = 5;
+    public AudioClip audioClip;
     // Define el desplazamiento en el espacio local de secondTurret
     private Vector3 desplazamientoLocal = new Vector3(-0.125f, 0, 0);
     public IEnumerator Apply(GameObject target, GameObject powerUpObject)
@@ -42,6 +43,8 @@ public class TurretData : ScriptableObject
             ovniController = target.transform.parent.parent.gameObject.GetComponent<OvniController>();
             ovniController.newAwake();
         }
+
+        Audio.Instance.PlaySound(audioClip);
         yield return new WaitForSeconds(duration);
         turretScript.powerUp = false;
         turretScript.turretData = baseTurretData;
@@ -52,7 +55,7 @@ public class TurretData : ScriptableObject
             target.transform.position -= desplazamientoGlobal;
 
         }
-        
+
         Destroy(powerUpObject);
     }
 }

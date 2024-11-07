@@ -16,3 +16,4 @@ MonoBehaviour:
   reloadDelay: 0.3
   bulletData: {fileID: 11400000, guid: 444ee91b7ecb7c84a81b521f69c41a80, type: 2}
   duration: 5
+  audioClip: {fileID: 8300000, guid: 88ed48fdb262e8646b693faedd8d6fc1, type: 3}
