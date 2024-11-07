@@ -17,6 +17,8 @@ public class AIDetector : MonoBehaviour
     [SerializeField]
     private LayerMask visibilityLayer; // El resto de capas que puede reconocer la ia
     public int playerNumber;
+    public GameObject aimAnim;
+    private GameObject aimAnimInstance;
     private bool targetIa;
     private float  detectionTimer1;
     private float  detectionTimer2;
@@ -157,6 +159,8 @@ public class AIDetector : MonoBehaviour
         if (collision != null)
         {
             Target = collision.transform;
+            aimAnimInstance = Instantiate(aimAnim, target.position, Quaternion.identity, target);
+            aimAnimInstance.transform.localScale /= Target.localScale.x;
         }
 
     }
