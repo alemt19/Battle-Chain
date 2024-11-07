@@ -16,3 +16,6 @@ MonoBehaviour:
   speed: 25
   damage: 15
   maxDistance: 30
+  audioClip: {fileID: 8300000, guid: f99ef24b1b899e146a6c2ca064da54f9, type: 3}
+  muzzleAnimation: {fileID: 0}
+  collisionAnimation: {fileID: 1747616519996265940, guid: 3ad9bb606afd0e642bf55cfc011172d0, type: 3}

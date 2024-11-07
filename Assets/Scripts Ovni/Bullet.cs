@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class Bullet : MonoBehaviour
     private SpriteRenderer sr;
     private Damagable damagableScript;
     private bool damagableScriptActive;
+    private CollisionEffectGen collisionEffectScript;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         damagableScript = gameObject.GetComponent<Damagable>();
+        collisionEffectScript = transform.GetChild(0).gameObject.GetComponent<CollisionEffectGen>();
     }
 
     public void Initialize(BulletData bulletData)
@@ -64,6 +67,7 @@ public class Bullet : MonoBehaviour
     {
         //Debug.Log("Colliderd " + collision.name);
 
+
         var damageble = collision.GetComponent<Damagable>();
         if (damageble != null)
         {
@@ -72,10 +76,12 @@ public class Bullet : MonoBehaviour
 
         if (!damagableScriptActive)
         {
+            collisionEffectScript.CreateObject(bulletData);
             DisableObject();
         }
         else if (damagableScriptActive && collision.gameObject.layer != 6)
         {
+            collisionEffectScript.CreateObject(bulletData);
             DisableObjectAndResetHealth();
         }
 

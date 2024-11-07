@@ -10,4 +10,6 @@ public class BulletData : ScriptableObject
     public int damage = 10;
     public float maxDistance = 10;
     public AudioClip audioClip;
+    public GameObject muzzleAnimation;
+    public GameObject collisionAnimation;
 }
