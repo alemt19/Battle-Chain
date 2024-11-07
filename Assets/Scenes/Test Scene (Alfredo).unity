@@ -1872,7 +1872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1025200710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3801,6 +3801,10 @@ PrefabInstance:
     - target: {fileID: 1380319316343716586, guid: a92b3e639037f0249bb097574c4b4d27, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311565491977493625, guid: a92b3e639037f0249bb097574c4b4d27, type: 3}
+      propertyPath: cooldown
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4311565491977493625, guid: a92b3e639037f0249bb097574c4b4d27, type: 3}
       propertyPath: objectList.list.Array.size

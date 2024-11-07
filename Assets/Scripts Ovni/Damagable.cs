@@ -9,6 +9,7 @@ public class Damagable : MonoBehaviour
     public int MaxHealth = 100;
     [SerializeField]
     private int health;
+    GameObject aiDetector;
 
     public int Health
     {
@@ -43,9 +44,14 @@ public class Damagable : MonoBehaviour
             {
                 if(nameTag.Contains("1"))
                 {
+                    aiDetector = GameObject.FindGameObjectWithTag("Nave2").transform.GetChild(2).gameObject;
+                    aiDetector.GetComponent<AIDetector>().Target = null;
                     nameTag = "Player 2";
                 }
-                else{
+                else
+                {
+                    aiDetector = GameObject.FindGameObjectWithTag("Nave1").transform.GetChild(2).gameObject;
+                    aiDetector.GetComponent<AIDetector>().Target = null;
                     nameTag = "Player 1";
                 }
                 //canvas.GetComponent<TMP_Text>().text = "Game Over";
